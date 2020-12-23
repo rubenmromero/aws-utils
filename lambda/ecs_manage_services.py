@@ -20,9 +20,6 @@ result = { 'startedServices': [ ], 'stoppedServices': [ ] }
 #
 ecs = boto3.client('ecs')
 
-#
-# Function to print the boto3 responses in JSON format
-#
 def print_response(response):
     '''
     Function to print the boto3 responses in JSON format
