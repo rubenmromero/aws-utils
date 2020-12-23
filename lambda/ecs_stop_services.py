@@ -47,7 +47,7 @@ def lambda_handler(event, context):
                 desiredCount=0
             )
 
-            print(json_response(response))
+            #print(json_response(response))
             result['stoppedServices'].append(service)
 
     print("\nFinal result:\n" + json_response(result) + "\n")

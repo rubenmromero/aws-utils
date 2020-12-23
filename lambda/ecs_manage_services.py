@@ -114,7 +114,7 @@ def cronECSExec(cron, service_arn, service_name, service_config, action):
                 service=service_arn,
                 desiredCount=1
             )
-            print(json_response(response))
+            #if DEBUG:   print(json_response(response))
             result['startedServices'].append(service_name)
             
         if action == 'stop' and service_config['services'][0]['runningCount'] > 0:
@@ -125,7 +125,7 @@ def cronECSExec(cron, service_arn, service_name, service_config, action):
                 service=service_arn,
                 desiredCount=0
             )
-            print(json_response(response))
+            #if DEBUG:   print(json_response(response))
             result['stoppedServices'].append(service_name)
             
 def checkECS():

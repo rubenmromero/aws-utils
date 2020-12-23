@@ -42,7 +42,7 @@ def lambda_handler(event, context):
             desiredCount=1
         )
 
-        print(json_response(response))
+        #print(json_response(response))
         result['startedServices'].append(service)
     
     print("\nFinal result:\n" + json_response(result) + "\n")
