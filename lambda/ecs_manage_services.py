@@ -20,7 +20,7 @@ result = { 'startedServices': [ ], 'stoppedServices': [ ] }
 #
 ecs = boto3.client('ecs')
 
-def print_response(response):
+def json_response(response):
     '''
     Function to print the boto3 responses in JSON format
     '''
@@ -114,7 +114,7 @@ def cronECSExec(cron, service_arn, service_name, service_config, action):
                 service=service_arn,
                 desiredCount=1
             )
-            print_response(response)
+            print(json_response(response))
             result['startedServices'].append(service_name)
             
         if action == 'stop' and service_config['services'][0]['runningCount'] > 0:
@@ -125,7 +125,7 @@ def cronECSExec(cron, service_arn, service_name, service_config, action):
                 service=service_arn,
                 desiredCount=0
             )
-            print_response(response)
+            print(json_response(response))
             result['stoppedServices'].append(service_name)
             
 def checkECS():
@@ -164,11 +164,11 @@ def lambda_handler(event, context):
     try:
         checkECS()
 
-        print("\nFinal result:\n" + print_response(result) + "\n")
+        print("\nFinal result:\n" + json_response(result) + "\n")
         print("\n##### Execution finished #####\n")
         return {
             'statusCode': 200,
-            'body': print_response(result)
+            'body': json_response(result)
         }
     except Exception as e:
         print(str(e))

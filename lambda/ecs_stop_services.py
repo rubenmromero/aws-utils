@@ -15,7 +15,7 @@ result = { 'stoppedServices': [ ], 'excludedServices': [ ] }
 #
 # Function to print the boto3 responses in JSON format
 #
-def print_response(response):
+def json_response(response):
     return json.dumps(
         response,
         default=str,
@@ -47,12 +47,12 @@ def lambda_handler(event, context):
                 desiredCount=0
             )
 
-            print_response(response)
+            print(json_response(response))
             result['stoppedServices'].append(service)
 
-    print("\nFinal result:\n" + print_response(result) + "\n")
+    print("\nFinal result:\n" + json_response(result) + "\n")
     print("\n##### Execution finished #####\n")
     return {
         'statusCode': 200,
-        'body': print_response(result)
+        'body': json_response(result)
     }
