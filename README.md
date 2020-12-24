@@ -56,7 +56,7 @@ This function requires the following environment variable to be set for its corr
 
 * `ECS_CLUSTER` => Cluster name whose services are to be started
 
-That is:
+Namely:
 
     ECS_CLUSTER=<ecs_cluster_name>
 
@@ -111,7 +111,7 @@ This function requires the following environment variables to be set for its cor
 * `ECS_CLUSTER` => Cluster name whose services are to be stopped
 * `EXCLUDED_SERVICES` => List of services to be excluded from being stopped
 
-That is:
+Namely:
 
     ECS_CLUSTER=<ecs_cluster_name>
     EXCLUDED_SERVICES=<ecs_service_1> <ecs_service_2> <ecs_service_3> ...
@@ -153,7 +153,7 @@ This function requires the following environment variable to be set for its corr
 
 * `ECS_CLUSTER` => Cluster name whose services are to be started
 
-That is:
+Namely:
 
     ECS_CLUSTER=<ecs_cluster_name>
 
