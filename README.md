@@ -2,21 +2,21 @@
 
 Utilities and resources to build and deploy Gigigo projects on Amazon Web Services.
 
-## CloudFormation
+## [CloudFormation](cloudformation/)
 
-* `project-env-2az-vpc.template` => Creation of network structure based on 2 availability zones for a new project environment
-* `project-env-3az-vpc.template` => Creation of network structure based on 3 availability zones for a new project environment
+### [project-env-2az-vpc.template](cloudformation/project-env-2az-vpc.template) & [project-env-3az-vpc.template](cloudformation/project-env-3az-vpc.template)
 
-### project-env-2az-vpc.template & project-env-3az-vpc.template
+* [`project-env-2az-vpc.template`](cloudformation/project-env-2az-vpc.template) => Creation of network structure based on 2 availability zones for a new project environment
+* [`project-env-3az-vpc.template`](cloudformation/project-env-3az-vpc.template) => Creation of network structure based on 3 availability zones for a new project environment
 
 Enter `<Project>-<Env>-VPC` as stack name, where:
 
 * `<Project>` matchs the `ProjectName` parameter value
 * `<Env>` matchs the `Environment` parameter value
 
-## Lambda
+## [Lambda](lambda/)
 
-### ecs_manage_services.py
+### [ecs_manage_services.py](lambda/ecs_manage_services.py)
 
 Function to start and stop in a scheduled way all services belonging to an ECS cluster set through the `ECS_CLUSTER` environment variable.
 
@@ -73,7 +73,7 @@ startService | 0 7 1-7 | Start the service at 7:00 UTC every day of the week
 stopService | 30 17 1-5 | Stop the service at 17:30 UTC on business days
 stopService | 0 0 2-6 | Stop the service at 0:00 UTC on business days
 
-### ecs_stop_services.py
+### [ecs_stop_services.py](lambda/ecs_stop_services.py)
 
 Function to stop all services belonging to an ECS cluster set through the `ECS_CLUSTER` environment variable, scaling in each of them to 0 service tasks.
 
@@ -116,7 +116,7 @@ Namely:
     ECS_CLUSTER=<ecs_cluster_name>
     EXCLUDED_SERVICES=<ecs_service_1> <ecs_service_2> <ecs_service_3> ...
 
-### ecs_start_services.py
+### [ecs_start_services.py](lambda/ecs_start_services.py)
 
 Function to start all services belonging to an ECS cluster set through the `ECS_CLUSTER` environment variable, scaling out each of them to 1 service tasks.
 

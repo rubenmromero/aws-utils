@@ -146,7 +146,7 @@ def checkECS():
         )
 
         if DEBUG:   print("\n'{}' service has {} tasks running".format(service_name, service_config['services'][0]['runningCount']))
-        if service_config['services'][0]['tags']:
+        if 'tags' in service_config['services'][0]:
             for tag in service_config['services'][0]['tags']:
                 if tag['key'] == 'startService':
                     if DEBUG:   print("\nFound a 'startService' tag on '" + service_name + "' service")
