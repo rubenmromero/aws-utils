@@ -76,7 +76,7 @@
         "CidrBlock": { "Fn::Join" : [ ".", [ "10", { "Ref" : "ProjectId" }, "0.0/16" ] ] },
         "InstanceTenancy": "default",
         "EnableDnsSupport": "true",
-        "EnableDnsHostnames": "false",
+        "EnableDnsHostnames": "true",
         "Tags": [
           {
             "Key": "Name",
