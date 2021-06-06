@@ -32,7 +32,11 @@ def lambda_handler(event, context):
     ecs = boto3.client('ecs')
     
     # Get all services belonging to the ECS cluster
-    ecs_services = ecs.list_services(cluster=ecs_cluster)['serviceArns']
+    paginator = ecs.get_paginator('list_services')
+    response_iterator = paginator.paginate(cluster=ecs_cluster)
+    ecs_services = []
+    for page in response_iterator:
+        ecs_services.extend(page['serviceArns'])
     
     for service in ecs_services:
         print("\nScaling out '" + service + "' ECS service tasks to 1...")

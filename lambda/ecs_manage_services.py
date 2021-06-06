@@ -134,7 +134,11 @@ def checkECS():
     '''
 
     # Get all services belonging to the ECS cluster
-    ecs_services = ecs.list_services(cluster=ecs_cluster)['serviceArns']
+    paginator = ecs.get_paginator('list_services')
+    response_iterator = paginator.paginate(cluster=ecs_cluster)
+    ecs_services = []
+    for page in response_iterator:
+        ecs_services.extend(page['serviceArns'])
     
     for service_arn in ecs_services:
         # Get service configuration
